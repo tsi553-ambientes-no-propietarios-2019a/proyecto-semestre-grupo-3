@@ -22,9 +22,9 @@
         </tbody>
     </table>
 
-    <a href="{{ path('anuncio_index') }}">back to list</a>
+    <a href="{{ path('anuncio_index') }}">Volver a la lista</a>
 
-    <a href="{{ path('anuncio_edit', {'id': anuncio.id}) }}">edit</a>
+    <a href="{{ path('anuncio_edit', {'id': anuncio.id}) }}">Editar</a>
 
     {{ include('anuncio/_delete_form.html.twig') }}
 {% endblock %}
