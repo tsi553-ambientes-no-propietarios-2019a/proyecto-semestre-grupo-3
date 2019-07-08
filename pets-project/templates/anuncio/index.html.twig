@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Anuncio index{% endblock %}
+
+{% block body %}
+    <h1>Anuncio index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titulo</th>
+                <th>Descr</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for anuncio in anuncios %}
+            <tr>
+                <td>{{ anuncio.id }}</td>
+                <td>{{ anuncio.titulo }}</td>
+                <td>{{ anuncio.Descr }}</td>
+                <td>
+                    <a href="{{ path('anuncio_show', {'id': anuncio.id}) }}">show</a>
+                    <a href="{{ path('anuncio_edit', {'id': anuncio.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('anuncio_new') }}">Create new</a>
+{% endblock %}
