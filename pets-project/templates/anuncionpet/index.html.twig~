@@ -18,7 +18,7 @@
 	{%else%}
 	Numero 2 es mayor
 {%endif%}
-<br>
+
 {#En la linea de abajjo se realiza un llamado a un enlace externo o interno #}
 <a href="{{path('catepet')}}"> Clic aqui para redirigir al controlador categoria de mascota </a>
 {% endblock %}
