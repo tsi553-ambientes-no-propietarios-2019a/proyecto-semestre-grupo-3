@@ -2,25 +2,25 @@
 
 namespace App\Repository;
 
-use App\Entity\Cantones;
+use App\Entity\Canton;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
- * @method Cantones|null find($id, $lockMode = null, $lockVersion = null)
- * @method Cantones|null findOneBy(array $criteria, array $orderBy = null)
- * @method Cantones[]    findAll()
- * @method Cantones[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Canton|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Canton|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Canton[]    findAll()
+ * @method Canton[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class CantonesRepository extends ServiceEntityRepository
+class CantonRepository extends ServiceEntityRepository
 {
     public function __construct(RegistryInterface $registry)
     {
-        parent::__construct($registry, Cantones::class);
+        parent::__construct($registry, Canton::class);
     }
 
     // /**
-    //  * @return Cantones[] Returns an array of Cantones objects
+    //  * @return Canton[] Returns an array of Canton objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class CantonesRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?Cantones
+    public function findOneBySomeField($value): ?Canton
     {
         return $this->createQueryBuilder('c')
             ->andWhere('c.exampleField = :val')
