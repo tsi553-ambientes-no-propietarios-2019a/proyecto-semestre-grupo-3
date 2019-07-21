@@ -24,7 +24,7 @@ class AddCityFieldListener implements EventSubscriberInterface {
                     ->setParameter('country', $country_id)
                     ;
             },
-            'placeholder' => 'Debe seleccionar un país primero',
+            'placeholder' => 'Debe seleccionar una provincia primero',
             'choice_label' => 'name'
         );
         $form->add('city', EntityType::class, $formOptions);
