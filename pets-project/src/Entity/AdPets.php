@@ -41,10 +41,6 @@ class AdPets
      */
     private $categorypets;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Canton", inversedBy="adPets")
-     */
-    private $cantons;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="adPets")
@@ -112,18 +108,6 @@ class AdPets
     public function setCategorypets(?CategoryPets $categorypets): self
     {
         $this->categorypets = $categorypets;
-
-        return $this;
-    }
-
-    public function getCantons(): ?Canton
-    {
-        return $this->cantons;
-    }
-
-    public function setCantons(?Canton $cantons): self
-    {
-        $this->cantons = $cantons;
 
         return $this;
     }

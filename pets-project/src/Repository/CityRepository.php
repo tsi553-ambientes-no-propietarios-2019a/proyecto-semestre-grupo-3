@@ -2,25 +2,25 @@
 
 namespace App\Repository;
 
-use App\Entity\Canton;
+use App\Entity\City;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
- * @method Canton|null find($id, $lockMode = null, $lockVersion = null)
- * @method Canton|null findOneBy(array $criteria, array $orderBy = null)
- * @method Canton[]    findAll()
- * @method Canton[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method City|null find($id, $lockMode = null, $lockVersion = null)
+ * @method City|null findOneBy(array $criteria, array $orderBy = null)
+ * @method City[]    findAll()
+ * @method City[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class CantonRepository extends ServiceEntityRepository
+class CityRepository extends ServiceEntityRepository
 {
     public function __construct(RegistryInterface $registry)
     {
-        parent::__construct($registry, Canton::class);
+        parent::__construct($registry, City::class);
     }
 
     // /**
-    //  * @return Canton[] Returns an array of Canton objects
+    //  * @return City[] Returns an array of City objects
     //  */
     /*
     public function findByExampleField($value)
@@ -36,8 +36,20 @@ class CantonRepository extends ServiceEntityRepository
     }
     */
 
+    public function findByCountry($country_id)
+    {
+        return $this->createQueryBuilder('city')
+            ->andWhere('city.country = :country')
+            ->setParameter('country', $country_id)
+            ->orderBy('city.name', 'ASC')
+            ->getQuery()
+            ->getArrayResult()
+            ;
+    }
+
+
     /*
-    public function findOneBySomeField($value): ?Canton
+    public function findOneBySomeField($value): ?City
     {
         return $this->createQueryBuilder('c')
             ->andWhere('c.exampleField = :val')

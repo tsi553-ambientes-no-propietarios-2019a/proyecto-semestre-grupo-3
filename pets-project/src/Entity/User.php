@@ -26,6 +26,16 @@ class User extends BaseUser
      */
     private $adPets;
 
+    /**
+     * @ORM\Column(type="string", length=120)
+     */
+    private $name;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\City", inversedBy="users")
+     */
+    private $city;
+
     public function __construct()
     {
         parent::__construct();
@@ -60,6 +70,30 @@ class User extends BaseUser
                 $adPet->setIdUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): self
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    public function getCity(): ?City
+    {
+        return $this->city;
+    }
+
+    public function setCity(?City $city): self
+    {
+        $this->city = $city;
 
         return $this;
     }

@@ -7,9 +7,9 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\ProvinceRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\CountryRepository")
  */
-class Province
+class Country
 {
     /**
      * @ORM\Id()
@@ -19,18 +19,18 @@ class Province
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=120)
      */
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Canton", mappedBy="idprov")
+     * @ORM\OneToMany(targetEntity="App\Entity\City", mappedBy="country")
      */
-    private $cantons;
+    private $cities;
 
     public function __construct()
     {
-        $this->cantons = new ArrayCollection();
+        $this->cities = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -51,30 +51,30 @@ class Province
     }
 
     /**
-     * @return Collection|Canton[]
+     * @return Collection|City[]
      */
-    public function getCantons(): Collection
+    public function getCities(): Collection
     {
-        return $this->cantons;
+        return $this->cities;
     }
 
-    public function addCanton(Canton $canton): self
+    public function addCity(City $city): self
     {
-        if (!$this->cantons->contains($canton)) {
-            $this->cantons[] = $canton;
-            $canton->setIdprov($this);
+        if (!$this->cities->contains($city)) {
+            $this->cities[] = $city;
+            $city->setCountry($this);
         }
 
         return $this;
     }
 
-    public function removeCanton(Canton $canton): self
+    public function removeCity(City $city): self
     {
-        if ($this->cantons->contains($canton)) {
-            $this->cantons->removeElement($canton);
+        if ($this->cities->contains($city)) {
+            $this->cities->removeElement($city);
             // set the owning side to null (unless already changed)
-            if ($canton->getIdprov() === $this) {
-                $canton->setIdprov(null);
+            if ($city->getCountry() === $this) {
+                $city->setCountry(null);
             }
         }
 
