@@ -9,6 +9,8 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class AdPetsType extends AbstractType
 {
@@ -28,7 +30,7 @@ class AdPetsType extends AbstractType
                 'choice_label' => 'description',
                 'placeholder' => 'Seleccione una...'
             ])
-
+            ->add('imageFile', VichImageType::class)
         ;
     }
 
