@@ -2,25 +2,25 @@
 
 namespace App\Repository;
 
-use App\Entity\Provincias;
+use App\Entity\Province;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
- * @method Provincias|null find($id, $lockMode = null, $lockVersion = null)
- * @method Provincias|null findOneBy(array $criteria, array $orderBy = null)
- * @method Provincias[]    findAll()
- * @method Provincias[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Province|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Province|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Province[]    findAll()
+ * @method Province[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class ProvinciasRepository extends ServiceEntityRepository
+class ProvinceRepository extends ServiceEntityRepository
 {
     public function __construct(RegistryInterface $registry)
     {
-        parent::__construct($registry, Provincias::class);
+        parent::__construct($registry, Province::class);
     }
 
     // /**
-    //  * @return Provincias[] Returns an array of Provincias objects
+    //  * @return Province[] Returns an array of Province objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class ProvinciasRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?Provincias
+    public function findOneBySomeField($value): ?Province
     {
         return $this->createQueryBuilder('p')
             ->andWhere('p.exampleField = :val')

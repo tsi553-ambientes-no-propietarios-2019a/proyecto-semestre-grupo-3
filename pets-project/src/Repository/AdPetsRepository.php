@@ -2,25 +2,25 @@
 
 namespace App\Repository;
 
-use App\Entity\Anuncio;
+use App\Entity\AdPets;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
- * @method Anuncio|null find($id, $lockMode = null, $lockVersion = null)
- * @method Anuncio|null findOneBy(array $criteria, array $orderBy = null)
- * @method Anuncio[]    findAll()
- * @method Anuncio[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method AdPets|null find($id, $lockMode = null, $lockVersion = null)
+ * @method AdPets|null findOneBy(array $criteria, array $orderBy = null)
+ * @method AdPets[]    findAll()
+ * @method AdPets[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class AnuncioRepository extends ServiceEntityRepository
+class AdPetsRepository extends ServiceEntityRepository
 {
     public function __construct(RegistryInterface $registry)
     {
-        parent::__construct($registry, Anuncio::class);
+        parent::__construct($registry, AdPets::class);
     }
 
     // /**
-    //  * @return Anuncio[] Returns an array of Anuncio objects
+    //  * @return AdPets[] Returns an array of AdPets objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class AnuncioRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?Anuncio
+    public function findOneBySomeField($value): ?AdPets
     {
         return $this->createQueryBuilder('a')
             ->andWhere('a.exampleField = :val')

@@ -2,25 +2,25 @@
 
 namespace App\Repository;
 
-use App\Entity\TipoAnuncio;
+use App\Entity\TypeAd;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
- * @method TipoAnuncio|null find($id, $lockMode = null, $lockVersion = null)
- * @method TipoAnuncio|null findOneBy(array $criteria, array $orderBy = null)
- * @method TipoAnuncio[]    findAll()
- * @method TipoAnuncio[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method TypeAd|null find($id, $lockMode = null, $lockVersion = null)
+ * @method TypeAd|null findOneBy(array $criteria, array $orderBy = null)
+ * @method TypeAd[]    findAll()
+ * @method TypeAd[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class TipoAnuncioRepository extends ServiceEntityRepository
+class TypeAdRepository extends ServiceEntityRepository
 {
     public function __construct(RegistryInterface $registry)
     {
-        parent::__construct($registry, TipoAnuncio::class);
+        parent::__construct($registry, TypeAd::class);
     }
 
     // /**
-    //  * @return TipoAnuncio[] Returns an array of TipoAnuncio objects
+    //  * @return TypeAd[] Returns an array of TypeAd objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class TipoAnuncioRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?TipoAnuncio
+    public function findOneBySomeField($value): ?TypeAd
     {
         return $this->createQueryBuilder('t')
             ->andWhere('t.exampleField = :val')
