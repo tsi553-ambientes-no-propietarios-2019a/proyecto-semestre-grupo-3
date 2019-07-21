@@ -36,7 +36,7 @@ class AnuncioType extends AbstractType
                     'class' => Cantones::class,
                     'choice_label' => 'nomCanton',])
 
-            ->add('imageFile', VichImage::class)
+            #->add('imageFile', VichImage::class)
         ;
     }
 
