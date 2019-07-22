@@ -10,6 +10,7 @@
             <tr>
                 <th>Id</th>
                 <th>Tittle</th>
+                <th>Photo</th>
                 <th>Description</th>
                 <th>Status</th>
                 <th>actions</th>
@@ -20,6 +21,7 @@
             <tr>
                 <td>{{ ad_pet.id }}</td>
                 <td>{{ ad_pet.tittle }}</td>
+                <td><img src="{{ vich_uploader_asset(ad_pet, 'imageFile') }}" alt="{{ ad_pet.tittle }}" height="35"/></td>
                 <td>{{ ad_pet.description }}</td>
                 <td>{{ ad_pet.status }}</td>
                 <td>
