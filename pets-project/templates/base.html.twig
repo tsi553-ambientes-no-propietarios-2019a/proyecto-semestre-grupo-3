@@ -4,16 +4,21 @@
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+          <link rel="stylesheet" type="text/css" href="{{ asset('stilo.css') }}">
+
         {% block stylesheets %}{% endblock %}
 
     </head>
 
 
 
-    <body>
+    <body style="background-color: #FBFEA8">
+    
     {% if app.user%}
         {% for role in app.user.roles %}
             <nav class="navbar navbar-expand-lg navbar-light bg-warning">
+                  <a class="navbar-brand" href="{{path('homepage')}}"> <img src="{{asset('images/icono.png')}}" alt="logo" height="50px"> </a>
+         
                 <a class="navbar-brand" href="{{ path('homepage') }}">Patitas Felices</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -49,6 +54,8 @@
         {% endfor %}
     {% else %}
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                  <a class="navbar-brand" href="{{path('homepage')}}"> <img src="{{asset('images/icono.png')}}" alt="logo" height="50px"> </a>
+            
             <a class="navbar-brand" href="{{ path('homepage') }}">Patitas Felices</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -90,6 +97,25 @@
             {% endblock %}
         </div>
 
+         
+
+<div id="footer" class="page-footer2">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">A ellos no les importa si eres rico o pobre, o los defectos que puedas tener</h5>
+                     <div class="card-panel">
+                        <span class="blue-text text-darken-2">En ocasiones un solo ladrido basta, para ser consciente de que no nos encontramos completamente solos. Y si cuentas con amigo fiel a tu lado, no hará falta más que verlo mover la cola y alegrarse por tu llegada, para que el día haya valido la pena.</span>
+                      </div>
+            </div>
+            <div class="col l4 offset-l2 s12">
+                <h5 class="blue-text">Redes Sociales</h5>
+            <ul>
+                <li><a  color="#f9fbe7" href="www.facebook.com">Facebook</a></li>
+                <li><a class="grey-text text-lighten-3" href="www.twitter.com">Twitter</a></li>
+            </div>
+        </div>
+</div>
 
         {% block javascripts %}
             <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>

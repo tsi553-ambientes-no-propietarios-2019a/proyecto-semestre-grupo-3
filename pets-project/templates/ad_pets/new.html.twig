@@ -1,11 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New AdPets{% endblock %}
+{% block title %}Ingresar Nuevo{% endblock %}
 
 {% block body %}
-    <h1>Create new AdPets</h1>
+    <h1 align="center" >Ingresar nuevo</h1>
+    <form class=" border border-dark p-5" >
 
-    {{ include('ad_pets/_form.html.twig') }}
+	    {{ include('ad_pets/_form.html.twig') }}
 
-    <a href="{{ path('ad_pets_index') }}">back to list</a>
+	    <a href="{{ path('ad_pets_index') }}">back to list</a>
+    </form>
 {% endblock %}
