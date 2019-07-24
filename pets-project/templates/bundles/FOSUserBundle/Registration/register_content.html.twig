@@ -1,5 +1,7 @@
 {% trans_default_domain 'FOSUserBundle' %}
-
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/stylesform.css') }}">
+{% endblock %}
 {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
 {{ form_row(form.name) }}
 {{ form_widget(form) }}

@@ -3,9 +3,9 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        {% block stylesheets %}{% endblock %}
-
+        {% block stylesheets %}
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        {% endblock %}
     </head>
 
 
@@ -14,7 +14,9 @@
     {% if app.user%}
         {% for role in app.user.roles %}
             <nav class="navbar navbar-expand-lg navbar-light bg-warning">
-                <a class="navbar-brand" href="{{ path('homepage') }}">Patitas Felices</a>
+                <a class="navbar-brand" href="{{ path('homepage') }}">
+                    <img src="{{ asset('images/logotittle.png') }}" alt="Patitas Felices" width="150" height="40">
+                </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -49,7 +51,9 @@
         {% endfor %}
     {% else %}
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="{{ path('homepage') }}">Patitas Felices</a>
+            <a class="navbar-brand" href="{{ path('homepage') }}">
+                <img src="{{ asset('images/logotittle.png') }}" alt="Patitas Felices" width="150" height="40">
+            </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
