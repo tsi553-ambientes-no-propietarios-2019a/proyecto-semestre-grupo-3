@@ -11,46 +11,9 @@
 
 
     <body>
-    {% if app.user%}
-        {% for role in app.user.roles %}
-            <nav class="navbar navbar-expand-lg navbar-light bg-warning">
-                <a class="navbar-brand" href="{{ path('homepage') }}">
-                    <img src="{{ asset('images/logotittle.png') }}" alt="Patitas Felices" width="150" height="40">
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="{{ path('fos_user_profile_show') }}"> {{app.user.username}} <span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Notificaciones</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Categoria
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">Caninos</a>
-                                <a class="dropdown-item" href="#">Felinos</a>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ path('ad_pets_new') }}" >Publicar</a>
-                        </li>
-                    </ul>
-                    <form class="form-inline my-2 my-lg-0">
-                        <input class="form-control mr-sm-2" type="search" placeholder="¿Qué estas buscando?" aria-label="Search">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
-                    </form>
-                </div>
-            </nav>
-        {% endfor %}
-    {% else %}
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    {% if not is_granted("IS_AUTHENTICATED_FULLY") %}
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="{{ path('homepage') }}">
                 <img src="{{ asset('images/logotittle.png') }}" alt="Patitas Felices" width="150" height="40">
             </a>
@@ -87,7 +50,53 @@
         </nav>
     {% endif %}
 
+    {% if is_granted("ROLE_USER") %}
+      <nav class="navbar navbar-expand-lg navbar-light bg-warning">
+                <a class="navbar-brand" href="{{ path('homepage') }}">
+                    <img src="{{ asset('images/logotittle.png') }}" alt="Patitas Felices" width="150" height="40">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{{ path('fos_user_profile_show') }}"> {{app.user.username}} <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Notificaciones</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Categoria
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#">Caninos</a>
+                                <a class="dropdown-item" href="#">Felinos</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('ad_pets_new') }}" >Publicar</a>
+                        </li>
+                         {% if is_granted("ROLE_SUPER_ADMIN") %}
+
+                         <li class="nav-item">
+                            <a class="nav-link" href="{{ path('country_index') }}" >Pais</a>
+                        </li>
+                         <li class="nav-item">
+                            <a class="nav-link" href="{{ path('city_index') }}" >Ciudad</a>
+                        </li>
+                        {% endif %}
+
+                    </ul>
+                    <form class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2" type="search" placeholder="¿Qué estas buscando?" aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+                    </form>
+                </div>
+            </nav>
+    {% endif %}
 
         <div class="container">
             {% block body %}

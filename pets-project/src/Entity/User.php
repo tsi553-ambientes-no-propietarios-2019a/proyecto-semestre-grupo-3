@@ -27,7 +27,7 @@ class User extends BaseUser
     private $adPets;
 
     /**
-     * @ORM\Column(type="string", length=120)
+     * @ORM\Column(type="string", length=120, nullable=true)
      */
     private $name;
 

@@ -11,14 +11,18 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
  * @Route("/provincia")
+* @IsGranted("ROLE_ADMIN")
  */
 class CountryController extends AbstractController
 {
     /**
      * @Route("/", name="country_index", methods={"GET"})
+     * @IsGranted("ROLE_ADMIN")
+     
      */
     public function index(CountryRepository $countryRepository): Response
     {
@@ -29,6 +33,7 @@ class CountryController extends AbstractController
 
     /**
      * @Route("/new", name="country_new", methods={"GET","POST"})
+     * @IsGranted("ROLE_ADMIN")
      */
     public function new(Request $request): Response
     {
@@ -52,6 +57,7 @@ class CountryController extends AbstractController
 
     /**
      * @Route("/{id}", name="country_show", methods={"GET"})
+     * @IsGranted("ROLE_ADMIN")
      */
     public function show(Country $country): Response
     {
@@ -62,6 +68,7 @@ class CountryController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="country_edit", methods={"GET","POST"})
+     * @IsGranted("ROLE_ADMIN")
      */
     public function edit(Request $request, Country $country): Response
     {
@@ -84,6 +91,7 @@ class CountryController extends AbstractController
 
     /**
      * @Route("/{id}", name="country_delete", methods={"DELETE"})
+     * @IsGranted("ROLE_ADMIN")
      */
     public function delete(Request $request, Country $country): Response
     {
@@ -98,6 +106,7 @@ class CountryController extends AbstractController
 
     /**
      * @Route("/ciudad_pais", name="cities_by_country", condition="request.headers.get('X-Requested-With') == 'XMLHttpRequest'")
+     * @IsGranted("ROLE_ADMIN")
      */
     public function citiesByCountry(Request $request)
     {
