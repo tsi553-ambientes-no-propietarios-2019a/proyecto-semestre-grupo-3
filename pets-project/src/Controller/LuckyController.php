@@ -5,6 +5,7 @@ namespace App\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Repository\AdPetsRepository;
 
 class LuckyController extends AbstractController
 {
@@ -13,12 +14,12 @@ class LuckyController extends AbstractController
 	/**
       * @Route("/", name="homepage")
       */
-     public function number()
+     public function index(AdPetsRepository $adPetsRepository): Response
     {
-        $number = random_int(0, 100);
+        
 
         return $this->render('lucky/number.html.twig', [
-            'number' => $number,
+            'ad_pets' => $adPetsRepository -> findAll(),
         ]);
     }
 }

@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Entity\User;
 
 /**
  * @Route("/anuncio")
@@ -20,8 +21,9 @@ class AdPetsController extends AbstractController
      */
     public function index(AdPetsRepository $adPetsRepository): Response
     {
+        $user = $this->getUser()->getId(); #codigo para obtener el id del usuario
         return $this->render('ad_pets/index.html.twig', [
-            'ad_pets' => $adPetsRepository->findAll(),
+            'ad_pets' => $adPetsRepository->findBy(["idUser"=> $user]),
         ]);
     }
 

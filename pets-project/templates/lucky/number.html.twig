@@ -3,8 +3,42 @@
 {% block stylesheets %} {{ parent() }} {% endblock %}
 
 {% block body %} {{ parent() }}
-	<h1>Tu numero de la suerte es {{ number }}</h1>
+
+<div class="container">
+	<div class="row">
+	<div class="col-2"></div>
+	<div class="col-8" >
+	{% for ad_pet in ad_pets %}
+	<table class="table table-bordered">
+		<tr>
+			<td>
+					<div align="center">
+							{{ ad_pet.id }}
+							<br>
+							<h2 align="center">{{ ad_pet.tittle }}</h2>
+							<br>
+							<img src="{{ vich_uploader_asset(ad_pet, 'imageFile') }}" alt="{{ ad_pet.tittle }}" height="155"/>
+							<br>
+							{{ ad_pet.description }}
+							<br>
+							{{ ad_pet.status }}
+							<br>
+							<a href="{{ path('ad_pets_show', {'id': ad_pet.id}) }}">show</a>
+					</div>
+			</td>
+			
+		</tr>
+	</table>
+	{% else %}
+		<tr>
+			<td colspan="5">no records found</td>
+		</tr>
+	</div>
+	</div>
+</div>
+
+{% endfor %}
  {% endblock %}
 
 
-{% block javascripts %} {{ parent() }} {% endblock %}
+{% block javascripts %} {{ parent() }} {% endblock %} 

@@ -3,9 +3,9 @@
 {% block title %}New AdPets{% endblock %}
 
 {% block body %}
-    <h1>Create new AdPets</h1>
+    <h1 align="center">Create new AdPets</h1>
 
     {{ include('ad_pets/_form.html.twig') }}
 
-    <a href="{{ path('ad_pets_index') }}">back to list</a>
+    <center><a href="{{ path('ad_pets_index') }}"><button type="button" class="btn btn-secondary" align="center">back to list</button></a></center> 
 {% endblock %}

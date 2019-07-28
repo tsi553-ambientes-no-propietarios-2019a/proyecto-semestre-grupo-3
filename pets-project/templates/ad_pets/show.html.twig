@@ -3,7 +3,7 @@
 {% block title %}AdPets{% endblock %}
 
 {% block body %}
-    <h1>AdPets</h1>
+    <h1 align="center">AdPets</h1>
 
     <table class="table">
         <tbody>
@@ -16,6 +16,10 @@
                 <td>{{ ad_pet.tittle }}</td>
             </tr>
             <tr>
+                <th>Photo</th>
+                <td><img src="{{ vich_uploader_asset(ad_pet, 'imageFile') }}" alt="{{ ad_pet.tittle }}" height="150"/></td>
+            </tr>
+            <tr>
                 <th>Description</th>
                 <td>{{ ad_pet.description }}</td>
             </tr>
@@ -26,9 +30,9 @@
         </tbody>
     </table>
 
-    <a href="{{ path('ad_pets_index') }}">back to list</a>
-
-    <a href="{{ path('ad_pets_edit', {'id': ad_pet.id}) }}">edit</a>
+    <center><a href="{{ path('ad_pets_index') }}"><button type="button" class="btn btn-secondary" align="center">back to list</button></a></center> 
+    
+    <center><a href="{{ path('ad_pets_edit', {'id': ad_pet.id}) }}"><button type="button" class="btn btn-light" align="center">edit</button></a></center> 
 
     {{ include('ad_pets/_delete_form.html.twig') }}
 {% endblock %}
