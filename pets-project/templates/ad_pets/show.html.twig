@@ -3,7 +3,7 @@
 {% block title %}AdPets{% endblock %}
 
 {% block body %}
-    <h1>AdPets</h1>
+    <h1 align="center">AdPets</h1>
 
     <table class="table">
         <tbody>
@@ -14,6 +14,10 @@
             <tr>
                 <th>Tittle</th>
                 <td>{{ ad_pet.tittle }}</td>
+            </tr>
+            <tr>
+                <th>Photo</th>
+                <td><img src="{{ vich_uploader_asset(ad_pet, 'imageFile') }}" alt="{{ ad_pet.tittle }}" height="150"/></td>
             </tr>
             <tr>
                 <th>Description</th>
