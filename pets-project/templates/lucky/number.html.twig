@@ -5,39 +5,29 @@
 {% block body %} {{ parent() }}
 
 <div class="container">
-	<div class="row">
-	<div class="col-2"></div>
-	<div class="col-8" >
-	{% for ad_pet in ad_pets %}
-	<table class="table table-bordered">
-		<tr>
-			<td>
-					<div align="center">
-							{{ ad_pet.id }}
-							<br>
-							<h2 align="center">{{ ad_pet.tittle }}</h2>
-							<br>
-							<img src="{{ vich_uploader_asset(ad_pet, 'imageFile') }}" alt="{{ ad_pet.tittle }}" height="155"/>
-							<br>
-							{{ ad_pet.description }}
-							<br>
-							{{ ad_pet.status }}
-							<br>
-							<a href="{{ path('ad_pets_show', {'id': ad_pet.id}) }}">show</a>
-					</div>
-			</td>
-			
-		</tr>
-	</table>
+<div class="row">
+    <div class="col-sm">
+{% for ad_pet in ad_pets %}
+
+	<div class="card" style="width: 18rem; margin=10px;">
+		<img src="{{ vich_uploader_asset(ad_pet, 'imageFile') }}" class="card-img-top" alt="{{ ad_pet.tittle }}"></img>
+		 <div class="card-body">
+			<h5 class="card-title">{{ ad_pet.tittle }}</h5>
+		    <p class="card-text">{{ ad_pet.description }}</p>
+		    <a href="{{ path('ad_pets_show', {'id': ad_pet.id}) }}" class="btn btn-primary">Mirar</a>
+  </div>				
+												
 	{% else %}
 		<tr>
 			<td colspan="5">no records found</td>
 		</tr>
-	</div>
-	</div>
-</div>
+
+
 
 {% endfor %}
+</div>
+</div>
+</div>
  {% endblock %}
 
 

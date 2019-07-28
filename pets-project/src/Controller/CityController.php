@@ -9,14 +9,20 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+
 
 /**
  * @Route("/canton")
+* @IsGranted("ROLE_ADMIN")
+
  */
 class CityController extends AbstractController
 {
     /**
      * @Route("/", name="city_index", methods={"GET"})
+* @IsGranted("ROLE_ADMIN")
+     
      */
     public function index(CityRepository $cityRepository): Response
     {
@@ -27,6 +33,8 @@ class CityController extends AbstractController
 
     /**
      * @Route("/new", name="city_new", methods={"GET","POST"})
+* @IsGranted("ROLE_ADMIN")
+
      */
     public function new(Request $request): Response
     {
@@ -50,6 +58,8 @@ class CityController extends AbstractController
 
     /**
      * @Route("/{id}", name="city_show", methods={"GET"})
+* @IsGranted("ROLE_ADMIN")
+
      */
     public function show(City $city): Response
     {
@@ -60,6 +70,8 @@ class CityController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="city_edit", methods={"GET","POST"})
+* @IsGranted("ROLE_ADMIN")
+
      */
     public function edit(Request $request, City $city): Response
     {
@@ -82,6 +94,8 @@ class CityController extends AbstractController
 
     /**
      * @Route("/{id}", name="city_delete", methods={"DELETE"})
+* @IsGranted("ROLE_ADMIN")
+     
      */
     public function delete(Request $request, City $city): Response
     {
