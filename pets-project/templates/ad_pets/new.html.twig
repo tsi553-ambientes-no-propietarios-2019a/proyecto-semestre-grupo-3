@@ -3,9 +3,12 @@
 {% block title %}New AdPets{% endblock %}
 
 {% block body %}
-    <h1 align="center">Create new AdPets</h1>
+    <div class="mx-auto" style="width: 300px;">
+    <h1 align="center">Crea tu anuncio!</h1>
 
     {{ include('ad_pets/_form.html.twig') }}
 
-    <center><a href="{{ path('ad_pets_index') }}"><button type="button" class="btn btn-secondary" align="center">back to list</button></a></center> 
+    <a href="{{ path('ad_pets_index') }}">
+        <button type="button" class="btn btn-secondary">Volver</button></a>
+</div>
 {% endblock %}

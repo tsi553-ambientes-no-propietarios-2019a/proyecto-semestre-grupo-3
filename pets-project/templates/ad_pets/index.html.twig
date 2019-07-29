@@ -1,32 +1,28 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}AdPets index{% endblock %}
-
 {% block body %}
-    <h1 align="center">AdPets index</h1>
+    <h1 align="center" style="padding: 30px">Mis anuncios</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Tittle</th>
-                <th>Photo</th>
-                <th>Description</th>
+                <th>Título</th>
+                <th>Foto</th>
+                <th>Descripción</th>
                 <th>Status</th>
-                <th>actions</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
         {% for ad_pet in ad_pets %}
             <tr>
-                <td>{{ ad_pet.id }}</td>
                 <td>{{ ad_pet.tittle }}</td>
                 <td><img src="{{ vich_uploader_asset(ad_pet, 'imageFile') }}" alt="{{ ad_pet.tittle }}" height="35"/></td>
                 <td>{{ ad_pet.description }}</td>
                 <td>{{ ad_pet.status }}</td>
                 <td>
-                    <a href="{{ path('ad_pets_show', {'id': ad_pet.id}) }}">show</a>
-                    <a href="{{ path('ad_pets_edit', {'id': ad_pet.id}) }}">edit</a>
+                    <a href="{{ path('ad_pets_show', {'id': ad_pet.id}) }}">Ver</a>
+                    <a href="{{ path('ad_pets_edit', {'id': ad_pet.id}) }}">Editar</a>
                 </td>
             </tr>
         {% else %}
@@ -37,5 +33,5 @@
         </tbody>
     </table>
 
-    <center><a href="{{ path('ad_pets_new') }}"><button type="button" class="btn btn-primary" align="center">Create new</button></a></center> 
+    <center><a href="{{ path('ad_pets_new') }}"><button type="button" class="btn btn-primary" align="center">Crear anuncio</button></a></center>
 {% endblock %}

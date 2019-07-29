@@ -1,12 +1,12 @@
 {% block body %}
-    <h3>Comment index</h3>
+    <h3 style="padding: 15px">Comentarios</h3>
 
     <table class="table">
         <thead>
         <tr>
             <th>Autor</th>
-            <th>Comment</th>
-            <th>Date</th>
+            <th>Mensaje</th>
+            <th>Fecha</th>
         </tr>
         </thead>
         <tbody>
@@ -14,7 +14,7 @@
             <tr>
                 <td>{{ comment.name }}</td>
                 <td>{{ comment.comment }}</td>
-                <td>{{ comment.date ? comment.date|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ comment.date ? comment.date|date('Y-m-d H:i') : '' }}</td>
 
             </tr>
         {% else %}
@@ -25,5 +25,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('comment_new') }}">Agregar comentario</a>
+    <a href="{{ path('comment_new') }}" class="btn btn-primary" style="margin: 30px auto">Agregar comentario</a>
 {% endblock %}
