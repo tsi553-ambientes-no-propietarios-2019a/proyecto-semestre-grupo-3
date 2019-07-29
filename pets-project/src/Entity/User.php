@@ -36,10 +36,16 @@ class User extends BaseUser
      */
     private $city;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Comment", mappedBy="sender")
+     */
+    private $comments;
+
     public function __construct()
     {
         parent::__construct();
         $this->adPets = new ArrayCollection();
+        $this->comments = new ArrayCollection();
         // your own logic
     }
 
@@ -94,6 +100,37 @@ class User extends BaseUser
     public function setCity(?City $city): self
     {
         $this->city = $city;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Comment[]
+     */
+    public function getComments(): Collection
+    {
+        return $this->comments;
+    }
+
+    public function addComment(Comment $comment): self
+    {
+        if (!$this->comments->contains($comment)) {
+            $this->comments[] = $comment;
+            $comment->setSender($this);
+        }
+
+        return $this;
+    }
+
+    public function removeComment(Comment $comment): self
+    {
+        if ($this->comments->contains($comment)) {
+            $this->comments->removeElement($comment);
+            // set the owning side to null (unless already changed)
+            if ($comment->getSender() === $this) {
+                $comment->setSender(null);
+            }
+        }
 
         return $this;
     }

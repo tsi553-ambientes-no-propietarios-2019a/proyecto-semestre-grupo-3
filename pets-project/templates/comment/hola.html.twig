@@ -1,0 +1,29 @@
+{% block body %}
+    <h3>Comment index</h3>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Autor</th>
+            <th>Comment</th>
+            <th>Date</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for comment in nom %}
+            <tr>
+                <td>{{ comment.name }}</td>
+                <td>{{ comment.comment }}</td>
+                <td>{{ comment.date ? comment.date|date('Y-m-d H:i:s') : '' }}</td>
+
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('comment_new') }}">Create new</a>
+{% endblock %}

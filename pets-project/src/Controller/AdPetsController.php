@@ -3,8 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\AdPets;
+use App\Entity\Comment;
 use App\Form\AdPetsType;
 use App\Repository\AdPetsRepository;
+use App\Repository\CommentRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -54,9 +56,12 @@ class AdPetsController extends AbstractController
      */
     public function show(AdPets $adPet): Response
     {
-        return $this->render('ad_pets/show.html.twig', [
-            'ad_pet' => $adPet,
-        ]);
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $nom = $entityManager->getRepository(Comment::class)->getsender($adPet);
+        return $this->render('ad_pets/show.html.twig',
+            array('ad_pet' => $adPet,'nom' => $nom)
+        );
     }
 
     /**
@@ -94,4 +99,6 @@ class AdPetsController extends AbstractController
 
         return $this->redirectToRoute('ad_pets_index');
     }
+
+
 }
