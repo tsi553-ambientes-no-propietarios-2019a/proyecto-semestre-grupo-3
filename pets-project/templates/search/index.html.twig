@@ -3,5 +3,40 @@
 {% block title %}Anuncios{% endblock %}
 
 {% block body %}
+    {{ parent() }}
+    <hr>
+    <div class="container">
+        <div class="row">
+            <div class="col-2">
+                <h2>Anuncios</h2>
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Tipo de anuncio
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="{{ path('ad_pets_Busq_type', {'id': 1}) }}">Adopción</a>
+                        <a class="dropdown-item" href="{{ path('ad_pets_Busq_type', {'id': 2}) }}">Mascotas perdidas</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-10">
+
+                {% for ad_pet in ad_pets %}
+                    <div class="list-group">
+                        <a href="{{ path('ad_pets_show', {'id': ad_pet.id}) }}" class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <img src="{{ vich_uploader_asset(ad_pet, 'imageFile') }}" alt="{{ ad_pet.tittle }}" height="60" width="120"/>
+                                <h4 class="mb-1">{{ ad_pet.tittle }}</h4>
+                                <small class="text-muted">3 days ago</small>
+                            </div>
+                            <p class="mb-1"><b>Descripción del Anuncio:</b> {{ ad_pet.description }}</p>
+                        </a>
+                    </div>
+
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
 
 {% endblock %}

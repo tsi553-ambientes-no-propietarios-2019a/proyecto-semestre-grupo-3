@@ -11,14 +11,17 @@
                 <a href="{{ path('ad_pets_index') }}"><button type="button" class="btn btn-secondary">Volver</button></a>
             </div>
     {% if is_granted("ROLE_USER") %}
+            {% if  app.user.id == ad_pet.idUser.id %}
             <div class=".col" style="padding: 5px">
                 <a href="{{ path('ad_pets_edit', {'id': ad_pet.id}) }}"><button type="button" class="btn btn-danger" align="center">Editar</button></a>
             </div>
             <div class=".col" style="padding: 5px">
                 {{ include('ad_pets/_delete_form.html.twig') }}
             </div>
+            {% endif %}
+
         </div>
-        {% endif %}
+     {% endif %}
     </div>
 
     <table class="table">
