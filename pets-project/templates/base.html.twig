@@ -26,19 +26,21 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ path('fos_user_registration_register') }}">Registrarse</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="btn btn-dark" href="{{ path('fos_user_security_login') }}" role="button">Publicar</a>
+                    </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Categoria
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Caninos</a>
-                            <a class="dropdown-item" href="#">Felinos</a>
+                            <a class="dropdown-item" href="{{ path('ad_pets_Busq', {'id': 1}) }}">Caninos</a>
+                            <a class="dropdown-item" href="{{ path('ad_pets_Busq', {'id': 2}) }}">Felinos</a>
                         </div>
                     </li>
-                    <li class="nav-item">
-                        <a class="btn btn-dark" href="{{ path('fos_user_security_login') }}" role="button">Publicar</a>
-                    </li>
                 </ul>
+
+
             </div>
         </nav>
     {% endif %}
@@ -58,20 +60,20 @@
                         <li class="nav-item active">
                             <a class="nav-link" href="{{ path('fos_user_profile_show') }}"> {{app.user.username}} <span class="sr-only">(current)</span></a>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Categoria
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">Caninos</a>
-                                <a class="dropdown-item" href="#">Felinos</a>
-                            </div>
-                        </li>
                         <li class="nav-item">
                             <a class="btn btn-light" href="{{ path('ad_pets_new') }}" role="button">Publicar</a>
                         </li>
                         <li class="nav-item">
                                 <a class="nav-link" href="{{ path('ad_pets_index') }}" >Mis publicaciones</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Categoria
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ path('ad_pets_Busq', {'id': 1}) }}">Caninos</a>
+                                <a class="dropdown-item" href="{{ path('ad_pets_Busq', {'id': 2}) }}">Felinos</a>
+                            </div>
                         </li>
 
                         {% if is_granted("ROLE_SUPER_ADMIN") %}
@@ -86,6 +88,8 @@
 
 
                     </ul>
+
+                    <span class="mr-sm-2"><a href="{{ path('fos_user_security_logout') }}" class="badge badge-dark">Cerrar Sesión</a></span>
                 </div>
             </nav>
     {% endif %}
@@ -115,4 +119,10 @@
         </div>
     </footer>
     </body>
+
+    {% block javascripts %}
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    {% endblock javascripts %}
 </html>

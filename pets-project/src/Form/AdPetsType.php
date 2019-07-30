@@ -18,7 +18,6 @@ class AdPetsType extends AbstractType
         $builder
             ->add('tittle')
             ->add('description')
-            ->add('status')
             ->add('typepets',EntityType::class, [
                 'class' => TypeAd::class,
                 'choice_label' => 'description',

@@ -44,6 +44,7 @@ class AdPetsController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+            $adPet->setStatus(1);
             $adPet->setIdUser($this->getUser());
             $entityManager->persist($adPet);
             $entityManager->flush();
@@ -67,6 +68,7 @@ class AdPetsController extends AbstractController
         $nom = $entityManager->getRepository(Comment::class)->getsender($adPet);
         return $this->render('ad_pets/show.html.twig',
             array('ad_pet' => $adPet,'nom' => $nom)
+
         );
     }
 
@@ -106,5 +108,27 @@ class AdPetsController extends AbstractController
         return $this->redirectToRoute('ad_pets_index');
     }
 
+
+    /**
+     * @Route("/busq/{id}", name="ad_pets_Busq", methods={"GET"})
+     *
+     */
+    public function Busq($id, AdPetsRepository $adPetsRepository): Response
+    {
+        return $this->render('search/index.html.twig', [
+            'ad_pets' => $adPetsRepository->findBy(["categorypets"=> $id]),
+        ]);
+    }
+
+    /**
+     * @Route("/busq/type/{id}", name="ad_pets_Busq_type", methods={"GET"})
+     *
+     */
+    public function BusqType($id, AdPetsRepository $adPetsRepository): Response
+    {
+        return $this->render('search/index.html.twig', [
+            'ad_pets' => $adPetsRepository->findBy(["typepets"=> $id]),
+        ]);
+    }
 
 }
