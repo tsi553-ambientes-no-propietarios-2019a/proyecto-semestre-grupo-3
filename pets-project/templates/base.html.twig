@@ -36,20 +36,16 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ path('fos_user_security_login') }}">Publicar</a>
+                        <a class="btn btn-dark" href="{{ path('fos_user_security_login') }}" role="button">Publicar</a>
                     </li>
                 </ul>
-                <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="¿Qué estas buscando?" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
-                </form>
             </div>
         </nav>
     {% endif %}
 
     {% if is_granted("ROLE_USER") %}
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-warning">
+    <nav class="navbar navbar-expand-lg navbar-light bg-success">
                 <a class="navbar-brand" href="{{ path('homepage') }}">
                     <img src="{{ asset('images/logotittle.png') }}" alt="Patitas Felices" width="150" height="40">
                 </a>
@@ -72,7 +68,7 @@
                             </div>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ path('ad_pets_new') }}" >Publicar</a>
+                            <a class="btn btn-light" href="{{ path('ad_pets_new') }}" role="button">Publicar</a>
                         </li>
                         <li class="nav-item">
                                 <a class="nav-link" href="{{ path('ad_pets_index') }}" >Mis publicaciones</a>
@@ -90,21 +86,33 @@
 
 
                     </ul>
-                    <form class="form-inline my-2 my-lg-0">
-                        <input class="form-control mr-sm-2" type="search" placeholder="¿Qué estas buscando?" aria-label="Search">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
-                    </form>
                 </div>
             </nav>
     {% endif %}
 
+    {% block out %}
+    {% endblock %}
         <div class="container">
             {% block body %}{% endblock %}
         </div>
 
-        <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-        {% block javascripts %}{% endblock javascripts %}
+
+
+    <body class="d-flex flex-column">
+    <div id="page-content">
+        <div class="container text-center">
+            <div class="row justify-content-center">
+                <div class="col-md-7">
+                    <h1 class="font-weight-light mt-4 text-white">Sticky Footer using Flexbox</h1>
+                    <p class="lead text-white-50">Use just two Bootstrap 4 utility classes and three custom CSS rules and you will have a flexbox enabled sticky footer for your website!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer id="sticky-footer" class="py-4 bg-dark text-white-50">
+        <div class="container text-center">
+            <small>Copyright &copy; ESFOT - EPN</small>
+        </div>
+    </footer>
     </body>
 </html>
