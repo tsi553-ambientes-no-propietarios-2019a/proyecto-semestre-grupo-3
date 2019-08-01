@@ -1,6 +1,7 @@
 {% block body %}
     <h3 style="padding: 15px">Comentarios</h3>
 
+    <a href="{{ path('comment_new', {ad_pet: ad_pet.id}) }}" class="btn btn-primary" style="margin: 30px auto">Agregar comentario</a>
     <table class="table">
         <thead>
         <tr>
@@ -19,11 +20,10 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="4">no records found</td>
+                <td colspan="4">Ningún comentaro aún</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('comment_new') }}" class="btn btn-primary" style="margin: 30px auto">Agregar comentario</a>
 {% endblock %}

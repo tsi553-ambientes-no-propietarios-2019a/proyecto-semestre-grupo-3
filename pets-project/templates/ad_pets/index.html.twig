@@ -9,7 +9,6 @@
                 <th>Título</th>
                 <th>Foto</th>
                 <th>Descripción</th>
-                <th>Status</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -17,9 +16,9 @@
         {% for ad_pet in ad_pets %}
             <tr>
                 <td>{{ ad_pet.tittle }}</td>
-                <td><img src="{{ vich_uploader_asset(ad_pet, 'imageFile') }}" alt="{{ ad_pet.tittle }}" height="35"/></td>
+
+                <td><img src="{{ vich_uploader_asset(ad_pet, 'imageFile') }}" alt="{{ ad_pet.tittle }}" height="50" width="50" class="img-fluid" style="border: cadetblue 1px solid"/></td>
                 <td>{{ ad_pet.description }}</td>
-                <td>{{ ad_pet.status }}</td>
                 <td>
                     <a href="{{ path('ad_pets_show', {'id': ad_pet.id}) }}">Ver</a>
                     <a href="{{ path('ad_pets_edit', {'id': ad_pet.id}) }}">Editar</a>

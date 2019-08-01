@@ -57,7 +57,7 @@ class CommentRepository extends ServiceEntityRepository
             JOIN App\Entity\User user
             WITH user.id = comm.sender 
             AND comm.adpet =:identificador
-            ORDER BY comm.id ASC
+            ORDER BY comm.id DESC
             '
         )
             ->setParameter('identificador', $idadd)

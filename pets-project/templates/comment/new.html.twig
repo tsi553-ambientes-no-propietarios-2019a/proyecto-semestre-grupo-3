@@ -1,8 +1,10 @@
 {% extends 'base.html.twig' %}
 {% block body %}
 <div class="mx-auto" style="width: 400px;">
-    <h3 style="margin: 40px auto" class="text-center">Agraga tu comentario</h3>
+    <h3 style="margin: 40px auto" class="text-center">Agrega tu comentario!</h3>
+
     {{ include('comment/_form.html.twig') }}
+
     <a href="{{ path('comment_index') }}" class="btn btn-secondary">Volver</a>
 </div>
 {% endblock %}

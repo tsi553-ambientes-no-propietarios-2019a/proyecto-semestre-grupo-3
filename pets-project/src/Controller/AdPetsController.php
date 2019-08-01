@@ -22,8 +22,7 @@ class AdPetsController extends AbstractController
 {
     /**
      * @Route("/", name="ad_pets_index", methods={"GET"})
-    * @IsGranted("IS_AUTHENTICATED_FULLY")
-
+     * @IsGranted("IS_AUTHENTICATED_FULLY")
      */
     public function index(AdPetsRepository $adPetsRepository): Response
     {
@@ -107,7 +106,6 @@ class AdPetsController extends AbstractController
 
         return $this->redirectToRoute('ad_pets_index');
     }
-
 
     /**
      * @Route("/busq/{id}", name="ad_pets_Busq", methods={"GET"})

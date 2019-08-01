@@ -15,10 +15,6 @@ class CommentType extends AbstractType
     {
         $builder
             ->add('comment')
-            ->add('adpet', EntityType::class, [
-                'class' => AdPets::class,
-                'choice_label' => 'id'
-            ])
         ;
     }
 
